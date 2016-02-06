@@ -15,6 +15,7 @@ import smy20011.reportviewer.ui.viewmodels.toCategory
 class CategoryFragment : TitleListFragment() {
     val cache = cache(Array<Category>::class.java)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        cache.loadFromBundle(savedInstanceState)
         cache load {
             activity.reportRepo.load() then {
                 it.toCategory().toTypedArray()
@@ -37,10 +38,5 @@ class CategoryFragment : TitleListFragment() {
     override fun onSaveInstanceState(outState: Bundle) {
         cache.saveToBundle(outState)
         super.onSaveInstanceState(outState)
-    }
-
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        cache.loadFromBundle(savedInstanceState)
-        super.onViewStateRestored(savedInstanceState)
     }
 }

@@ -19,6 +19,11 @@ open class BaseFragment<VH : BaseViewHolder>(val vhClass: KClass<VH>) : Fragment
         return container!!.createViewHolder(vhClass).view
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        retainInstance = true
+        super.onCreate(savedInstanceState)
+    }
+
     fun uiThread(foo: () -> Unit) {
         activity.runOnUiThread(foo)
     }

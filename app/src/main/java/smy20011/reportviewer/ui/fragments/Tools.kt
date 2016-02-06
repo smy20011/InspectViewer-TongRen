@@ -25,7 +25,7 @@ class Cache<T : Any>(val clazz: Class<T>) {
     fun exists(): Boolean
             = synchronized(lock) { return cache != null }
 
-    fun put(data: T)
+    fun put(data: T?)
             = synchronized(lock) { cache = data }
 
     fun loadFromBundle(bundle: Bundle?) {

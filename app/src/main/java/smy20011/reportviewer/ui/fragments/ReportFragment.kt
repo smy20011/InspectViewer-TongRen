@@ -27,6 +27,7 @@ class ReportFragment : TitleListFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val data = arguments.get(Category::class.java)
         viewHolder.title.text = "检测项目: ${data.name}"
+        cache.loadFromBundle(savedInstanceState)
         cache load {
             data.reports.getReportItems() then {it.toTypedArray()}
         } then {
@@ -39,11 +40,6 @@ class ReportFragment : TitleListFragment() {
         super.onSaveInstanceState(outState)
     }
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        cache.loadFromBundle(savedInstanceState)
-        super.onViewStateRestored(savedInstanceState)
-    }
-
     fun setUpListAdapter(data: Array<ReportItem>) {
         val adapter = data.getAdapter(InfoViewHolder::class) {
             infoViewHolder, data ->
@@ -54,6 +50,8 @@ class ReportFragment : TitleListFragment() {
                 goto(DetailedFragment.getInstance(data))
             }
         }
-        uiThread { viewHolder.list.adapter = adapter }
+        uiThread {
+            viewHolder.list.adapter = adapter
+        }
     }
 }

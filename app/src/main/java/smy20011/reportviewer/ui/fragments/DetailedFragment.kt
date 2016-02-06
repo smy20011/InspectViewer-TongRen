@@ -21,7 +21,7 @@ class DetailedFragment : TitleListFragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         val data = arguments.get(ReportItem::class.java)
-        viewHolder.title.text = data.name
+        viewHolder.title.text = "${data.name}\n正常范围: ${data.range}"
         viewHolder.list.adapter = data.histories.getAdapter(InfoViewHolder::class) {
             infoView, data ->
             val formatter = SimpleDateFormat("yyyy-MM-dd")

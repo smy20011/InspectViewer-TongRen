@@ -27,6 +27,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     compile 'nl.komponents.kovenant:kovenant-core:3.0.0-rc.1036'
     compile 'nl.komponents.kovenant:kovenant-android:3.0.0-rc.1036'
     compile 'junit:junit:4.12'
@@ -34,6 +35,7 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.0.1'
     compile 'org.jsoup:jsoup:1.8.3'
     compile 'com.android.support:support-v4:21.0.3'
+    compile 'com.google.code.gson:gson:2.5'
 }
 
 buildscript {
